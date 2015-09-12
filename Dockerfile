@@ -5,7 +5,7 @@ WORKDIR /data/htdocs
 ENV DRUSH_VERSION 6.x
 
 RUN apt-get update && \
-  apt-get install --no-install-recommends -y ssmtp libmysqlclient-dev &&\
+  apt-get install --no-install-recommends -y ssmtp libmysqlclient-dev mysql-client && \
   rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-install pdo_mysql
