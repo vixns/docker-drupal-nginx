@@ -10,7 +10,7 @@ RUN apt-get update && \
 
 RUN docker-php-ext-install pdo_mysql
 
-RUN git clone -b $DRUSH_VERSION https://github.com/drush-ops/drush.git /usr/src/drush && cd /usr/src/drush && ln -s /usr/src/drush/drush /usr/bin/drush && composer install
+RUN git clone -b $DRUSH_VERSION https://github.com/drush-ops/drush.git /usr/src/drush && cd /usr/src/drush && ln -s /usr/src/drush/drush /usr/bin/drush && composer update
 
 # https://www.drupal.org/node/3060/release
 ENV DRUPAL_VERSION 7.41
