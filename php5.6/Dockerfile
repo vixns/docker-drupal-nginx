@@ -1,4 +1,4 @@
-FROM vixns/php-nginx:7
+FROM vixns/php-nginx:5.6
 MAINTAINER Stéphane Cottin <stephane.cottin@vixns.com>
 WORKDIR /data/htdocs
 
