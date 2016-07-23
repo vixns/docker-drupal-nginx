@@ -13,8 +13,8 @@ RUN docker-php-ext-install pdo_mysql
 RUN git clone -b $DRUSH_VERSION https://github.com/drush-ops/drush.git /usr/src/drush && cd /usr/src/drush && ln -s /usr/src/drush/drush /usr/bin/drush && composer update
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 7.43
-ENV DRUPAL_MD5 c6fb49bc88a6408a985afddac76b9f8b
+ENV DRUPAL_VERSION 7.50
+ENV DRUPAL_MD5 f23905b0248d76f0fc8316692cd64753
 
 RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz \
   && echo "${DRUPAL_MD5} *drupal.tar.gz" | md5sum -c - \
