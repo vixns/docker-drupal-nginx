@@ -33,7 +33,7 @@ php71-pdo_pgsql php71-pgsql postgresql-client \
 && chown -R www-data:www-data . \
 && apk add --no-cache composer \
 && composer require --no-progress --no-interaction swiftmailer/swiftmailer=5.4 sentry/sentry drush/drush \
-drupal/mmeu drupal/health_check drupal/raven_release drush/config-extra monolog/monolog drupal/backup_migrate \
+drupal/mmeu drupal/health_check drupal/raven_release drush/config-extra monolog/monolog \
 && if [ ${APP_ENV} = "prod" ];then  COMPOSER_DISCARD_CHANGES=1 composer install --no-dev --no-progress --no-interaction; fi \
 && ln -s /data/htdocs/vendor/bin/drush /usr/bin/drush \
 && chmod +x /tini
