@@ -8,15 +8,15 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # https://www.drupal.org/node/3060/release
 ENV \
-DRUPAL_VERSION=8.3.5 \
-DRUPAL_MD5=23832fcfe0c6398727d24e582042f149 \
+DRUPAL_VERSION=8.3.6 \
+DRUPAL_MD5=de7ceedf9391c4b52c1c5a7f66809129 \
 TINI_VERSION=v0.14.0 TINI_SUBREAPER=1
 
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-amd64 /tini
 ENTRYPOINT ["/tini", "--"]
 CMD ["/sbin/runit-wrapper"]
 
-RUN apk add --no-cache git php7.1-libsodium php7.1-apcu \
+RUN apk add --no-cache git php7.1-sodium php7.1-apcu \
 php7.1-pdo_mysql php7.1-mysqlnd mysql-client \
 php7.1-pdo_pgsql php7.1-pgsql postgresql-client php7.1-gd \
 && apk add --no-cache --virtual .build-deps php7.1-dev git gcc g++ linux-headers make \
