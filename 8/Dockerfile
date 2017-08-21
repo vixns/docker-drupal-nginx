@@ -8,8 +8,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # https://www.drupal.org/node/3060/release
 ENV \
-DRUPAL_VERSION=8.3.6 \
-DRUPAL_MD5=de7ceedf9391c4b52c1c5a7f66809129 \
+DRUPAL_VERSION=8.3.7 \
+DRUPAL_MD5=e7b1f382d6bd2b18d4b4aca01d335bc0 \
 TINI_VERSION=v0.14.0 TINI_SUBREAPER=1
 
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-amd64 /tini
