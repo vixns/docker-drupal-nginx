@@ -32,8 +32,8 @@ php7.1-pdo_pgsql php7.1-pgsql postgresql-client php7.1-gd \
 && rm drupal.tar.gz \
 && chown -R www-data:www-data . \
 && apk add --no-cache php7.1-composer \
-&& composer require --no-progress --no-interaction swiftmailer/swiftmailer=5.4 sentry/sentry drush/drush \
-drupal/mmeu drupal/health_check drupal/raven_release drush/config-extra monolog/monolog \
+&& composer require --no-progress --no-interaction --update-no-dev --update-with-dependencies \
+drush/drush drupal/mmeu drupal/health_check drupal/raven_release drupal/swiftmailer drush/config-extra drupal/mailsystem \
 && if [ ${APP_ENV} = "prod" ];then  COMPOSER_DISCARD_CHANGES=1 composer install --no-dev --no-progress --no-interaction; fi \
 && ln -s /data/htdocs/vendor/bin/drush /usr/bin/drush \
 && chmod +x /tini
