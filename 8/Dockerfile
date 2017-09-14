@@ -17,7 +17,7 @@ ENTRYPOINT ["/tini", "--"]
 CMD ["/sbin/runit-wrapper"]
 
 RUN apk add --no-cache git php7.1-sodium php7.1-apcu \
-php7.1-pdo_mysql php7.1-mysqlnd mysql-client \
+php7.1-pdo_mysql php7.1-mysqlnd php7.1-mysqli mysql-client \
 php7.1-pdo_pgsql php7.1-pgsql postgresql-client php7.1-gd \
 && apk add --no-cache --virtual .build-deps php7.1-dev git gcc g++ linux-headers make \
 && git clone https://github.com/Jan-E/uploadprogress.git \
