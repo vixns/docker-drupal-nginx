@@ -25,7 +25,7 @@ RUN apt-get update \
   && echo "extension=uploadprogress.so" >> "/usr/local/etc/php/conf.d/ext-uploadprogress.ini" \
   && rm -rf uploadprogress \
   && pecl install libsodium \
-  && echo "extension=libsodium.so" > /usr/local/etc/php/conf.d/libsodium.ini \
+  && echo "extension=sodium.so" > /usr/local/etc/php/conf.d/sodium.ini \
   && pecl install apcu \
   && echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini \
   && curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz \
