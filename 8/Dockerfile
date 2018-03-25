@@ -8,8 +8,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # https://www.drupal.org/node/3060/release
 ENV \
-DRUPAL_VERSION=8.4.5 \
-DRUPAL_MD5=e866ae73a2ce13eb803cd24c68ef94c7 \
+DRUPAL_VERSION=8.5.0 \
+DRUPAL_MD5=5679d3fa188fb80368ee46ab40acdb6b \
 TINI_VERSION=v0.14.0 TINI_SUBREAPER=1
 
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-amd64 /tini
@@ -32,8 +32,10 @@ php7.1-pdo_pgsql php7.1-pgsql postgresql-client php7.1-gd \
 && rm drupal.tar.gz \
 && chown -R www-data:www-data . \
 && apk add --no-cache php7.1-composer \
+&& composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
 && composer require --no-progress --no-interaction --update-no-dev --update-with-dependencies \
 drush/drush drupal/mmeu drupal/health_check drupal/raven drupal/raven_release drupal/swiftmailer drush/config-extra drupal/mailsystem \
 && if [ ${APP_ENV} = "prod" ];then  COMPOSER_DISCARD_CHANGES=1 composer install --no-dev --no-progress --no-interaction; fi \
+&& composer clear-cache \
 && ln -s /data/htdocs/vendor/bin/drush /usr/bin/drush \
 && chmod +x /tini
