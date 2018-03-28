@@ -5,8 +5,8 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 7.57
-ENV DRUPAL_MD5 44dec95a0ef56c4786785f575ac59a60
+ENV DRUPAL_VERSION 7.58
+ENV DRUPAL_MD5 c59949bcfd0d68b4f272bc05a91d4dc6
 
 RUN apt-get update \
   && apt-get install --no-install-recommends -y ssmtp libmysqlclient-dev mysql-client \
