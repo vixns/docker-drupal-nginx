@@ -5,8 +5,8 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.4.6
-ENV DRUPAL_MD5 e4b17dc542724f6298435dca81a84f8d
+ENV DRUPAL_VERSION 8.4.8
+ENV DRUPAL_MD5 f922c5fead1e05ecf155cfd63983fcf1
 
 ENV TINI_VERSION v0.14.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
