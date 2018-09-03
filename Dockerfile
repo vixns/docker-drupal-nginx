@@ -1,11 +1,11 @@
-FROM vixns/php-nginx:7.2-debian
+FROM vixns/php-nginx:7.1-debian
 
 WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.5.6
-ENV DRUPAL_MD5 1e789adb03cf2a82a9c3bced67c02328
+ENV DRUPAL_VERSION 8.2.3
+ENV DRUPAL_MD5 683ddc33077bb1f7cc795607d114144e
 
 ENV TINI_VERSION v0.18.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
@@ -13,7 +13,7 @@ RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
 RUN apt-get update \
-  && apt-get install -t stretch-backports --no-install-recommends -y git ssmtp unzip default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev \
+  && apt-get install -t stretch-backports --no-install-recommends -y git ssmtp unzip mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
@@ -34,7 +34,7 @@ RUN apt-get update \
   && dpkg --purge libcurl4-gnutls-dev libjpeg-dev libpng-dev libfreetype6-dev \
   && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/* \
-  && composer require drush/drush \
+  && composer require drush/drush ~9 \
   && curl -sLo /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar \
   && chmod 0755 /usr/local/bin/drush \
   && chown -R www-data:www-data .
