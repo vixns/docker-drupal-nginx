@@ -13,7 +13,8 @@ RUN chmod +x /tini
 ENTRYPOINT ["/tini", "--"]
 
 RUN apt-get update \
-  && apt-get install -t stretch-backports --no-install-recommends -y git ssmtp unzip mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev \
+  && apt-get install -t stretch-backports --no-install-recommends -y git ssmtp unzip mysql-client \
+     default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
