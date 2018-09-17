@@ -7,11 +7,6 @@ COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 ENV DRUPAL_VERSION 8.5.6
 ENV DRUPAL_MD5 1e789adb03cf2a82a9c3bced67c02328
 
-ENV TINI_VERSION v0.18.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-ENTRYPOINT ["/tini", "--"]
-
 RUN apt-get update \
   && apt-get install -t stretch-backports --no-install-recommends -y git ssmtp unzip mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev \
   && rm -rf /var/lib/apt/lists/* \
