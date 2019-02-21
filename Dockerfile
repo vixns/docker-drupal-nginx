@@ -7,10 +7,9 @@ ARG APP_ENV=prod
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # https://www.drupal.org/node/3060/release
-ENV \
-DRUPAL_VERSION=8.6.7 \
-DRUPAL_MD5=cd3d0c9ad1d9e976eb589a963e427388 \
-TINI_VERSION=v0.18.0 TINI_SUBREAPER=1
+ENV DRUPAL_VERSION 8.6.10
+ENV DRUPAL_MD5 5aee2dacfb525f146fc28b4535066d1c
+ENV TINI_VERSION=v0.18.0 TINI_SUBREAPER=1
 
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-amd64 /tini
 ENTRYPOINT ["/tini", "--"]
