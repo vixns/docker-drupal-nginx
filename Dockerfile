@@ -35,6 +35,5 @@ php7.1-pdo_pgsql php7.1-pgsql postgresql-client php7.1-gd \
 && composer require --no-progress --no-interaction --update-no-dev --update-with-dependencies \
 drush/drush drupal/mmeu drupal/health_check drupal/raven drupal/raven_release drupal/swiftmailer drush/config-extra drupal/mailsystem \
 && if [ ${APP_ENV} = "prod" ];then  COMPOSER_DISCARD_CHANGES=1 composer install --no-dev --no-progress --no-interaction; fi \
-&& composer clear-cache \
 && ln -s /data/htdocs/vendor/bin/drush /usr/bin/drush \
 && chmod +x /tini
