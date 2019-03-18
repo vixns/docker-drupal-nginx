@@ -1,5 +1,4 @@
 FROM vixns/php-nginx:7.2-debian
-
 WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
