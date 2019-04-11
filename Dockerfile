@@ -3,8 +3,8 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.6.13
-ENV DRUPAL_MD5 ded84151ebda80826f18e924dab03edd
+ENV DRUPAL_VERSION 8.6.14
+ENV DRUPAL_MD5 04cf60554a5036c7a69c652e669461c3
 
 RUN apt-get update \
   && apt-get install -t stretch-backports --no-install-recommends -y git ssmtp unzip mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev \
