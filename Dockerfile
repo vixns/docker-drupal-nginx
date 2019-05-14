@@ -9,7 +9,7 @@ ENV DRUPAL_VERSION 7.67
 ENV DRUPAL_MD5 78b1814e55fdaf40e753fd523d059f8d
 
 RUN apt-get update \
-  && apt-get install --no-install-recommends -y ssmtp default-libmysqlclient-dev mysql-client \
+  && apt-get install --no-install-recommends -y ssmtp default-libmysqlclient-dev mysql-client git \
   && rm -rf /var/lib/apt/lists/* \
   && docker-php-ext-install pdo_mysql \
   && curl -sL https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar -o /usr/local/bin/drush \
