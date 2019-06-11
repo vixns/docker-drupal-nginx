@@ -9,9 +9,10 @@ ENV DRUPAL_VERSION 7.67
 ENV DRUPAL_MD5 78b1814e55fdaf40e753fd523d059f8d
 
 RUN apt-get update \
-  && apt-get install --no-install-recommends -y ssmtp default-libmysqlclient-dev mysql-client git \
+  && apt-get install --no-install-recommends -y ssmtp default-libmysqlclient-dev mysql-client git libjpeg-dev libpng-dev librsvg2-dev xfonts-base xfonts-75dpi libfreetype6-dev \
+  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib \
   && rm -rf /var/lib/apt/lists/* \
-  && docker-php-ext-install pdo_mysql \
+  && docker-php-ext-install pdo_mysql gd \
   && curl -sL https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar -o /usr/local/bin/drush \
   && chmod 755 /usr/local/bin/drush \
   && curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz \
