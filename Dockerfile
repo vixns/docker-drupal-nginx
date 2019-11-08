@@ -3,18 +3,18 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.7.8
-ENV DRUPAL_MD5 f281eb14d8aabf0c3e78dd519ca4b640
+ENV DRUPAL_VERSION 8.7.9
+ENV DRUPAL_MD5 fce471e505f03164ec1cfafffc1d85ad
 
 RUN apt-get update \
-  && apt-get install -t buster-backports --no-install-recommends -y git unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev \
+  && apt-get install -t buster-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
   && composer clear-cache \
   && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib \
-  && docker-php-ext-install pdo_mysql bcmath gmp gd zip \
+  && docker-php-ext-install pdo_mysql bcmath gmp gd zip exif \
   && git clone https://github.com/Jan-E/uploadprogress.git \
   && pecl install uploadprogress/package.xml \
   && echo "extension=uploadprogress.so" >> "/usr/local/etc/php/conf.d/ext-uploadprogress.ini" \
