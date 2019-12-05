@@ -9,7 +9,7 @@ ENV DRUPAL_VERSION 7.68
 ENV DRUPAL_MD5 4db5c00b9304ee9bc3e5dff8e87c79fd
 
 RUN apt-get update \
-  && apt-get install --no-install-recommends -y ssmtp default-libmysqlclient-dev mysql-client git libjpeg-dev libpng-dev librsvg2-dev xfonts-base xfonts-75dpi libfreetype6-dev \
+  && apt-get install --no-install-recommends -y default-libmysqlclient-dev default-mysql-client git libjpeg-dev libpng-dev librsvg2-dev xfonts-base xfonts-75dpi libfreetype6-dev \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib \
   && rm -rf /var/lib/apt/lists/* \
   && docker-php-ext-install pdo_mysql gd \
