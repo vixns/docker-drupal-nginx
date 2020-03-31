@@ -28,7 +28,7 @@ RUN apt-get update \
   && dpkg --purge libcurl4-gnutls-dev libjpeg-dev libpng-dev libfreetype6-dev \
   && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/* \
-  && composer require drush/drush \
+  && php -d memory_limit=20G /usr/local/bin/composer require drush/drush \
   && curl -sLo /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar \
   && chmod 0755 /usr/local/bin/drush \
   && chown -R www-data:www-data .
