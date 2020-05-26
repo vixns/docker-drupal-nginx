@@ -12,7 +12,7 @@ RUN apt-get update \
   && apt-get install --no-install-recommends -y default-libmysqlclient-dev default-mysql-client git libjpeg-dev libpng-dev librsvg2-dev xfonts-base xfonts-75dpi libfreetype6-dev \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib \
   && rm -rf /var/lib/apt/lists/* \
-  && docker-php-ext-install pdo_mysql gd \
+  && docker-php-ext-install pdo_mysql sockets intl zip mbstring mcrypt gd \
   && curl -sL https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar -o /usr/local/bin/drush \
   && chmod 755 /usr/local/bin/drush \
   && curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz \
