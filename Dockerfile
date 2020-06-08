@@ -1,10 +1,10 @@
-FROM vixns/php-nginx:7.3-debian
+FROM vixns/php-nginx:7.4-debian
 WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.8.7
-ENV DRUPAL_MD5 cf073efecded37ef41122fb63b9721a2
+ENV DRUPAL_VERSION 8.9.0
+ENV DRUPAL_MD5 3f57e9e8a7c2fe9c499712d5d254f55b
 
 RUN apt-get update \
   && apt-get install -t buster-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev \
@@ -13,7 +13,7 @@ RUN apt-get update \
   && composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
   && composer clear-cache \
   && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h \
-  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib \
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install pdo_mysql bcmath gmp gd zip exif \
   && git clone https://github.com/Jan-E/uploadprogress.git \
   && pecl install uploadprogress/package.xml \
