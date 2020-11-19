@@ -3,15 +3,13 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 9.0.7
-ENV DRUPAL_MD5 bfaeacfe00e96ac6788603e0fcf82880
+ENV DRUPAL_VERSION 9.0.8
+ENV DRUPAL_MD5 f3df81c0fd6d9d87ecce31de032dbce0
 
 RUN apt-get update \
   && apt-get install -t buster-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-  && composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
-  && composer clear-cache \
   && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install pdo_mysql bcmath gmp gd zip exif \
