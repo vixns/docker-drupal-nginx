@@ -3,8 +3,8 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.9.8
-ENV DRUPAL_MD5 9ea519013a62e2fddc38ef3bf637b6f6
+ENV DRUPAL_VERSION 8.9.9
+ENV DRUPAL_MD5 a16fb5a47c1bb24a72386f56ed6f6ecc
 
 RUN apt-get update \
   && apt-get install -t buster-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev \
