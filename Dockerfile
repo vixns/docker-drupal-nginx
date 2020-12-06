@@ -5,7 +5,7 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 7.74
+ENV DRUPAL_VERSION 7.77
 ENV DRUPAL_MD5 85d6033ff4bb1b5eed88909ff692c775
 
 RUN apt-get update \
