@@ -3,7 +3,7 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 9.0.10
+ENV DRUPAL_VERSION 9.1.0
 ENV DRUPAL_MD5 f3df81c0fd6d9d87ecce31de032dbce0
 
 RUN apt-get update \
