@@ -1,4 +1,4 @@
-FROM vixns/php-nginx:7.4-debian
+FROM vixns/php-nginx:8.0-debian
 WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
@@ -11,8 +11,7 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h \
-  && docker-php-ext-configure gd --with-freetype --with-jpeg \
-  && docker-php-ext-install pdo_mysql bcmath gmp gd zip exif \
+  && docker-php-ext-install pdo_mysql bcmath gmp zip exif \
   && git clone https://github.com/Jan-E/uploadprogress.git \
   && pecl install uploadprogress/package.xml \
   && echo "extension=uploadprogress.so" >> "/usr/local/etc/php/conf.d/ext-uploadprogress.ini" \
