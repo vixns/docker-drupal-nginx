@@ -1,5 +1,6 @@
 FROM vixns/php-nginx:8.0-debian
 WORKDIR /data/htdocs
+USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
@@ -29,3 +30,4 @@ RUN apt-get update \
   && curl -sLo /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar \
   && chmod 0755 /usr/local/bin/drush \
   && chown -R www-data:www-data .
+USER www-data
