@@ -9,6 +9,7 @@ ENV DRUPAL_MD5 641af3b5de0e6f84304b0878d6afcdf7
 
 RUN apt-get update \
   && apt-get install -t buster-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libjpeg-dev libpng-dev libfreetype6-dev libzip-dev \
+  libcurl3-gnutls=7.64.0-4+deb10u2 libcurl4-gnutls-dev=7.64.0-4+deb10u2 \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/include/gmp.h \
