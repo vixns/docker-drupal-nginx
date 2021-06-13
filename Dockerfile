@@ -31,5 +31,5 @@ RUN apt-get update \
   && php -d memory_limit=20G /usr/local/bin/composer require drush/drush \
   && curl -sLo /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar \
   && chmod 0755 /usr/local/bin/drush \
-  && chown -R www-data:www-data /data
+  && chown -R www-data:www-data /data /var/log/nginx /var/lib/nginx /etc/service /run
 USER www-data
