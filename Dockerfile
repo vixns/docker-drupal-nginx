@@ -1,4 +1,4 @@
-FROM vixns/php-nginx:8.0-debian
+FROM vixns/php-nginx:8.0.11
 WORKDIR /data/htdocs
 USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
