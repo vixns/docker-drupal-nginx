@@ -1,17 +1,20 @@
-FROM vixns/php-nginx:7.1-debian
+FROM vixns/php-nginx:7.4-debian
 WORKDIR /data/htdocs
 
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 7.83
-ENV DRUPAL_MD5 c8833da8f1ef03a244b4130b71872e26
+ENV DRUPAL_VERSION 7.84
+ENV DRUPAL_MD5 1d270b00fbbb87a81776202eec1f848e
 
 RUN apt-get update \
-  && apt-get install --no-install-recommends -y default-libmysqlclient-dev default-mysql-client git libjpeg-dev libicu-dev libmcrypt-dev libpng-dev librsvg2-dev xfonts-base xfonts-75dpi libfreetype6-dev \
-  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib \
+  && apt-get install --no-install-recommends -y default-libmysqlclient-dev default-mysql-client git libjpeg-dev \
+  libicu-dev libmcrypt-dev libpng-dev librsvg2-dev xfonts-base xfonts-75dpi libfreetype6-dev libzip-dev libonig-dev \
+  && docker-php-ext-configure gd \
   && rm -rf /var/lib/apt/lists/* \
-  && docker-php-ext-install pdo_mysql sockets intl zip mbstring mcrypt gd \
+  && docker-php-ext-install pdo_mysql sockets intl zip mbstring gd \
+  && pecl install mcrypt \
+  && docker-php-ext-enable mcrypt \
   && curl -sL https://github.com/drush-ops/drush/releases/download/8.1.16/drush.phar -o /usr/local/bin/drush \
   && chmod 755 /usr/local/bin/drush \
   && curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz \
