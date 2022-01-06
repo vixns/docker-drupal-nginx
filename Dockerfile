@@ -1,14 +1,14 @@
-FROM vixns/php-nginx:8.0.12
+FROM vixns/php-nginx:8.0.14
 WORKDIR /data/htdocs
 USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 9.2.10
-ENV DRUPAL_MD5 6982ab0a20ad6721e576625329c949a3
+ENV DRUPAL_VERSION 9.3.2
+ENV DRUPAL_MD5 8b6f625d23c88caf413a48ddf6c01150
 
 RUN apt-get update \
-  && apt-get install -t bullseye-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
+  && apt install -t bullseye-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
   libcurl3-gnutls libcurl4-gnutls-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
@@ -24,7 +24,7 @@ RUN apt-get update \
   && tar -xz --strip-components=1 -f drupal.tar.gz \
   && rm drupal.tar.gz \
   && dpkg --purge libcurl4-gnutls-dev \
-  && apt-get -y autoremove \
+  && apt -y autoremove \
   && rm -rf /var/lib/apt/lists/* \
   && php -d memory_limit=20G /usr/local/bin/composer require drush/drush \
   && curl -sLo /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.9.1/drush.phar \
