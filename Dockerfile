@@ -1,4 +1,4 @@
-FROM vixns/php-nginx:7.4-debian
+FROM vixns/php-nginx:7.4.27
 WORKDIR /data/htdocs
 
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
