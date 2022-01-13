@@ -4,8 +4,8 @@ WORKDIR /data/htdocs
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 7.84
-ENV DRUPAL_MD5 1d270b00fbbb87a81776202eec1f848e
+ENV DRUPAL_VERSION 7.85
+ENV DRUPAL_MD5 7d00db5ab8e8ba4ddde3445f0698026a
 
 RUN apt-get update \
   && apt-get install --no-install-recommends -y default-libmysqlclient-dev default-mysql-client git libjpeg-dev \
