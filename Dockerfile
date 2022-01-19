@@ -1,4 +1,4 @@
-FROM vixns/php-nginx:8.0.14
+FROM vixns/php-nginx:7.4.27-nonroot
 WORKDIR /data/htdocs
 USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
