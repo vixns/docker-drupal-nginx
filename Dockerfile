@@ -4,8 +4,8 @@ USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 9.3.6
-ENV DRUPAL_MD5 01adfb2ac9246f28c494486704c27680
+ENV DRUPAL_VERSION 9.3.7
+ENV DRUPAL_MD5 db57fb613b8565fd15593a0e7af4139a
 
 RUN apt-get update \
   && apt install -t bullseye-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
@@ -27,7 +27,7 @@ RUN apt-get update \
   && apt -y autoremove \
   && rm -rf /var/lib/apt/lists/* \
   && php -d memory_limit=20G /usr/local/bin/composer require drush/drush \
-  && curl -sLo /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.9.1/drush.phar \
+  && curl -sLo /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/latest/download/drush.phar \
   && chmod 0755 /usr/local/bin/drush \
   && chown -R www-data:www-data /data
 USER www-data
