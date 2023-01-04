@@ -4,7 +4,7 @@ USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 10.0.2
+ENV DRUPAL_VERSION 10.0.1
 ENV DRUPAL_MD5 f651ca09e2fea62952ae6ea6fe7d9b15
 
 RUN apt-get update \
