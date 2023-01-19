@@ -1,11 +1,11 @@
-FROM vixns/php-nginx:8.1.13
+FROM vixns/php-nginx:8.1.14
 WORKDIR /data/htdocs
 USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 10.0.1
-ENV DRUPAL_MD5 f651ca09e2fea62952ae6ea6fe7d9b15
+ENV DRUPAL_VERSION 10.0.2
+ENV DRUPAL_MD5 c6d00db37d0b333df2d9c1ebbca47dfd
 
 RUN apt-get update \
   && apt install -t bullseye-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
