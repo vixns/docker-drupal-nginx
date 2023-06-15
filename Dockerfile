@@ -8,11 +8,10 @@ ENV DRUPAL_VERSION 7.98
 ENV DRUPAL_MD5 4139f0feecb44a53645242194809b73a
 
 RUN apt-get update \
-  && apt-get install --no-install-recommends -y default-libmysqlclient-dev default-mysql-client git libjpeg-dev \
-  libicu-dev libmcrypt-dev libpng-dev librsvg2-dev xfonts-base xfonts-75dpi libfreetype6-dev libzip-dev libonig-dev \
-  && docker-php-ext-configure gd \
+  && apt-get install --no-install-recommends -y default-libmysqlclient-dev default-mysql-client git \
+  libicu-dev libmcrypt-dev libzip-dev libonig-dev \
   && rm -rf /var/lib/apt/lists/* \
-  && docker-php-ext-install pdo_mysql sockets intl zip mbstring gd \
+  && docker-php-ext-install pdo_mysql sockets intl zip mbstring  \
   && pecl install mcrypt \
   && docker-php-ext-enable mcrypt \
   && curl -sL https://github.com/drush-ops/drush/releases/download/8.4.11/drush.phar -o /usr/local/bin/drush \
