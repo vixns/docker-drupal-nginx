@@ -4,8 +4,8 @@ USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 10.1.4
-ENV DRUPAL_MD5 30d9b24dbe72fa557bd30adf0f627452
+ENV DRUPAL_VERSION 10.1.5
+ENV DRUPAL_MD5 1e902cc577cd3c3a7ae40976833f3179
 
 RUN apt-get update \
   && apt install -t bullseye-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
