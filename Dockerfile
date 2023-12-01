@@ -1,4 +1,4 @@
-FROM vixns/php-nginx:8.2.12
+FROM vixns/php-nginx:8.2.13
 WORKDIR /data/htdocs
 USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
@@ -8,7 +8,7 @@ ENV DRUPAL_VERSION 10.1.6
 ENV DRUPAL_MD5 e9ce42bdee61e3bbce88ea4f40ac5baf
 
 RUN apt-get update \
-  && apt install -t bullseye-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
+  && apt install -t bookworm-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
   libcurl3-gnutls libcurl4-gnutls-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
