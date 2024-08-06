@@ -1,11 +1,11 @@
-FROM vixns/php-nginx:8.2.22
+FROM vixns/php-nginx:8.3.10
 WORKDIR /data/htdocs
 USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 10.3.1
-ENV DRUPAL_MD5 48dc4e58c9bb3cccda5df979a31de25a
+ENV DRUPAL_VERSION 11.0.0
+ENV DRUPAL_MD5 1cf81680a1a288eb705edcbf3527f21a
 
 RUN apt-get update \
   && apt install -t bookworm-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
