@@ -1,4 +1,4 @@
-FROM vixns/php-nginx:8.2.22
+FROM vixns/php-nginx:8.3.11
 WORKDIR /data/htdocs
 USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
