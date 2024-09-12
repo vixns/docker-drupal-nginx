@@ -4,8 +4,8 @@ USER root
 COPY nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 10.3.3
-ENV DRUPAL_MD5 9a2a4f6f4307f1474164b146ab76616e
+ENV DRUPAL_VERSION 10.3.4
+ENV DRUPAL_MD5 a21b74c39d27226c6c2668ee52c45394
 
 RUN apt-get update \
   && apt install -t bookworm-backports --no-install-recommends -y git sudo unzip default-mysql-client default-libmysqlclient-dev libgmp-dev libsodium-dev libzip-dev \
